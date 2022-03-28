@@ -3,16 +3,24 @@
 
 //Lee un elemento del archivo y lo guarda en la cadena de caracteres
 //La cadena de caracteres tiene que tener espacio suficiente para alojar el elemento del archivo + 1 (para el caracter nulo '\0')
-void LecturaElemento(FILE *f,char *string){
+void LecturaElemento(FILE *f,char *string, int longitudMaxima){
     char ch = fgetc(f);
     int i = 0;
     do{
         string[i] = ch;
         i++;
         ch=fgetc(f);
-    }while(ch != '-' && ch != '\n' && ch != EOF);
+    }while(ch != '-' && ch != '\n' && ch != EOF && i != (longitudMaxima-1));
     string[i] = '\0';
+
+    //Si la transmision de lectura a cadena termina al llegar al limite de capacidad de cadena, deja el cursor preparado para la siguiente lectura
+    if (ch != '-' && ch != '\n' && ch !=EOF){
+        do{
+        ch=fgetc(f);
+    }while(ch != '-' && ch != '\n' && ch != EOF);
+    }
 }
+
 int CaracterANumero(int ch){
     switch(ch){
         case '0':
@@ -144,10 +152,10 @@ int CargarUsuarios(Usuario **ptr){
         fseek(f,-1L,SEEK_CUR);
         usuario = realloc(usuario,(numeroUsuarios+1) * sizeof(Usuario));
         LecturaElementoNumerico(f,&usuario[numeroUsuarios].id);
-        LecturaElemento(f,usuario[numeroUsuarios].nombre);
+        LecturaElemento(f,usuario[numeroUsuarios].nombre, 21);
         LecturaAdministrador(f,&usuario[numeroUsuarios].perfil);
-        LecturaElemento(f,usuario[numeroUsuarios].nombreUsuario);
-        LecturaElemento(f,usuario[numeroUsuarios].contraseña);
+        LecturaElemento(f,usuario[numeroUsuarios].nombreUsuario, 6);
+        LecturaElemento(f,usuario[numeroUsuarios].contraseña, 9);
         numeroUsuarios++;
     }
     fclose(f);
@@ -180,11 +188,11 @@ int CargarAlumnos(Alumno **ptr){
         fseek(f,-1L,SEEK_CUR);
         alumno = realloc(alumno,(numeroAlumnos+1) * sizeof(Alumno));
         LecturaElementoNumerico(f,&alumno[numeroAlumnos].id);
-        LecturaElemento(f,alumno[numeroAlumnos].nombre);
-        LecturaElemento(f,alumno[numeroAlumnos].direccion);
-        LecturaElemento(f,alumno[numeroAlumnos].localidad);
-        LecturaElemento(f,alumno[numeroAlumnos].curso);
-        LecturaElemento(f,alumno[numeroAlumnos].grupo);
+        LecturaElemento(f,alumno[numeroAlumnos].nombre, 21);
+        LecturaElemento(f,alumno[numeroAlumnos].direccion, 31);
+        LecturaElemento(f,alumno[numeroAlumnos].localidad, 31);
+        LecturaElemento(f,alumno[numeroAlumnos].curso, 31);
+        LecturaElemento(f,alumno[numeroAlumnos].grupo, 11);
         numeroAlumnos++;
     }
     fclose(f);
@@ -214,8 +222,8 @@ int CargarMaterias(Materia **ptr){
         fseek(f,-1L,SEEK_CUR);
         materia = realloc(materia,(numeroMaterias+1) * sizeof(Materia));
         LecturaElementoNumerico(f,&materia[numeroMaterias].id);
-        LecturaElemento(f,materia[numeroMaterias].nombre);
-        LecturaElemento(f,materia[numeroMaterias].abreviatura);
+        LecturaElemento(f,materia[numeroMaterias].nombre, 51);
+        LecturaElemento(f,materia[numeroMaterias].abreviatura, 4);
         numeroMaterias++;
     }
     fclose(f);
@@ -276,7 +284,7 @@ int CargarCalificaciones(Calificacion **ptr){
         fseek(f,-1L,SEEK_CUR);
         calificacion = realloc(calificacion,(numeroCalificaciones+1) * sizeof(Calificacion));
         LecturaFecha(f,&calificacion[numeroCalificaciones].fecha);
-        LecturaElemento(f,calificacion[numeroCalificaciones].descripcion);
+        LecturaElemento(f,calificacion[numeroCalificaciones].descripcion, 31);
         LecturaElementoNumerico(f,&calificacion[numeroCalificaciones].idMateria);
         LecturaElementoNumerico(f,&calificacion[numeroCalificaciones].idAlumno);
         LecturaElementoNumerico(f,&calificacion[numeroCalificaciones].calificacion);
@@ -312,7 +320,7 @@ int CargarHorarios(Horario **ptr){
         LecturaElementoNumerico(f,&horario[numeroHorarios].dia);
         LecturaElementoNumerico(f,&horario[numeroHorarios].hora);
         LecturaElementoNumerico(f,&horario[numeroHorarios].idMateria);
-        LecturaElemento(f,horario[numeroHorarios].grupo);
+        LecturaElemento(f,horario[numeroHorarios].grupo, 11);
         numeroHorarios++;
     }
     fclose(f);
