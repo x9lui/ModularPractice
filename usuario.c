@@ -28,7 +28,7 @@ void login(){
     }while(strcmp(cU,u[browser].contraseña)==0); //comprobación contraseña
 } //inicialización de usuario
  
-void moddif_u(){ //Modificación de datos 
+void ModdifU(){ //Modificación de datos 
     int n,i;
     char d,aux;
     char pasw[9];
@@ -46,11 +46,11 @@ void moddif_u(){ //Modificación de datos
         getchar(d);
         switch(d){
             case 'N': //Modificación del nombre
-                u[i].nombre=mod_name();
+                u[i].nombre=ModName();
                 break;
 
             case 'n': //Modificación del nombre de usuario
-                u[i].nombreUsuario=mod_nickname();
+                u[i].nombreUsuario=ModNickname();
                 break;
 
             case 'C': //Modificación de contraseña
@@ -58,7 +58,7 @@ void moddif_u(){ //Modificación de datos
                 do{
                 fgets(pasw);
                 if(strcmp(pasw,u[i].contraseña)==0){
-                u[i].contraseña=mod_pasword();
+                u[i].contraseña=ModPasword();
                 aux=0
                 }
                 else{
@@ -69,7 +69,7 @@ void moddif_u(){ //Modificación de datos
                 break;
 
             case 'P'://Modificación del perfil
-                u[i].perfil=mod_profile(u[i].perfil);
+                u[i].perfil=ModProfile(u[i].perfil);
                 break;
 
             case '0':
@@ -81,7 +81,7 @@ void moddif_u(){ //Modificación de datos
     //Llamar a la funcion que escribe en el fichero 
 }
 
-char *mod_name(){
+char *ModName(){
     char n_name[21];
     printf("Introducir nuevo nombre, recuerde que solo puede tener 20 caracteres, si incluye más solo se guardadran los 20 primeros\n");
     fgets(n_name,21,stdin);
@@ -89,7 +89,7 @@ char *mod_name(){
     return(n_name);
 }
 
-char *mod_nickname(){
+char *ModNickname(){
     char n_nickname[6];
     printf("Introducir nuevo nombre de usuario, recuerde que solo puede tener 5 caracteres, si incluye más solo se guardarán los 5 primeros\n");
     fgets(n_nickname,6,stdin);
@@ -97,7 +97,7 @@ char *mod_nickname(){
     return(n_nickname);
 }
 
-char *mod_pasword(){
+char *ModPasword(){
     char n_pasword[9];
     printf("Introducir nuevo nombre de usuario, recuerde que solo puede tener 8 caracteres, si incluye más solo se guardarán los 8 primeros\n");
     fgets(n_pasword,9,stdin);
@@ -106,7 +106,7 @@ char *mod_pasword(){
     return(n_pasword);
 }
 
-int mod_profile(int p){
+int ModProfile(int p){
     if(p==0){
         p=1;
         printf("El profesor ahora es administrador.\n");
@@ -122,18 +122,18 @@ int mod_profile(int p){
 
 //Funcion de prueba de  las funciones
 
-void prueba_flogin(){
+void PruebaFlogin(){
     int numUs, auxp;
     Usuario *u,*uaux;
     numUs = CargarUsuarios(&u);
     auxp = CargarUsuarios(&uaux);
     for(auxp=0;auxp!=numUs;auxp++){
-        autologin(auxp);
+        Autologin(auxp);
     }
 }
 
     //Prueba automatica flogin
-    void autologin(int aux){ 
+    void Autologin(int aux){ 
         int browser;
         Usuario *u;
         int numUs = CargarUsuarios(&u);
