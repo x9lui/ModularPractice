@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifndef LECTOR
+#define LECTOR
 //Lee un elemento del archivo y lo guarda en la cadena de caracteres
 //La cadena de caracteres tiene que tener espacio suficiente para alojar el elemento del archivo + 1 (para el caracter nulo '\0')
 void LecturaElemento(FILE *f,char *string, int longitudMaxima){
@@ -16,8 +18,8 @@ void LecturaElemento(FILE *f,char *string, int longitudMaxima){
     //Si la transmision de lectura a cadena termina al llegar al limite de capacidad de cadena, deja el cursor preparado para la siguiente lectura
     if (ch != '-' && ch != '\n' && ch !=EOF){
         do{
-        ch=fgetc(f);
-    }while(ch != '-' && ch != '\n' && ch != EOF);
+            ch=fgetc(f);
+        }while(ch != '-' && ch != '\n' && ch != EOF);
     }
 }
 
@@ -305,6 +307,8 @@ typedef struct{
     char grupo[11];
 } Horario;
 
+//Carga los horarios en un vector de estructuras y devuelve el numero de horarios
+//El numero de horarios nos será de utilidad cuando tengamos que hacer bucles que recorran todo el vector
 int CargarHorarios(Horario **ptr){
     Horario *horario;
     horario = malloc(sizeof(Horario));
@@ -327,3 +331,5 @@ int CargarHorarios(Horario **ptr){
     *ptr = horario;
     return numeroHorarios;
 }
+
+#endif
