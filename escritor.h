@@ -99,7 +99,7 @@ void EscribirMatriculas(Matricula *matriculas, int nMatriculas){
 //Escribe el vector de estructuras Calificacion en su fichero correspondiente, importante prestar especial atención a nCalificaciones ya que puede variar si se eliminan o se añaden nuevas calificaciones
 void EscribirCalificaciones(Calificacion *calificaciones, int nCalificaciones){
     FILE *f;
-    f = fopen("1/Calificaciones.txt","w");
+    f = fopen("Calificaciones.txt","w");
 
     for(int i = 0; i<nCalificaciones; i++){
         EscribirFecha(f,calificaciones[i].fecha);
@@ -117,7 +117,7 @@ void EscribirCalificaciones(Calificacion *calificaciones, int nCalificaciones){
 //Escribe el vector de estructuras Horario en su fichero correspondiente, importante prestar especial atención a nHorarios ya que puede variar si se eliminan o se añaden nuevos horarios
 void EscribirHorarios(Horario *horarios, int nHorarios){
     FILE *f;
-    f = fopen("1/Horarios.txt","w");
+    f = fopen("Horarios.txt","w");
 
     for(int i = 0; i<nHorarios;i++){
         EscribirNumero(f,horarios[i].idProf,3);
