@@ -66,5 +66,59 @@ void ModNom(Alumno *st,int idA){
         printf("Se ha modificado el nombre correctarmente\n");
 }
 
-void ModDir
+void ModDir(Alumno *st,int idA){
+    char auxD[31];
+
+    printf("Introduzca la nueva dirección del alumno\n;")
+    fgets(auxD,31,stdin);
+
+    strcpy(st[idA].direccion,auxD);
+    if (strcmp(st[idA].direccion,auxD)== 0)
+        printf("Se ha modificado la dirección correctarmente\n");
+}
+
+void ModLoc(Alumno +st, int idA){
+    char auxL[31];
+
+    printf("Introduzca la nueva localidad del alumno\n;")
+    fgets(auxL,31,stdin);   
+
+    strcpy(st[idA].localidad,auxL);
+    if (strcmp(st[idA].localidad,auxL)== 0)
+        printf("Se ha modificado la localidad correctarmente\n");  
+}
+
+void ModCur(Alumno *st,int idA){
+    char auxC[31];
+
+    printf("Introduzca el nuevo curso del alumno\n;")
+    fgets(auxC,31,stdin);   
+
+    strcpy(st[idA].curso,auxC);
+    if (strcmp(st[idA].curso,auxC)== 0)
+        printf("Se ha modificado el curso correctarmente\n");  
+}
+
+void ModGru(Alumno *st,int idA){ //Añadir un bucle si no se cumple el if (usar variable i++ dentro del if y terminar bucle cuando i<0)
+    char auxG[11];
+
+    printf("Introduzca el nuevo curso del alumno\n;")
+    fgets(auxG,31,stdin);   
+
+    strcpy(st[idA].grupo,auxG);
+    if (strcmp(st[idA].grupo,auxG)== 0)
+        printf("Se ha modificado el grupo correctarmente\n");
+}
+
+void GuardarCambios(Alumno st){ //Hacer función, explicación Luis
+
+}
+
+void MostarAlumnos(){
+    Alumno a;
+    int i, n = CargarAlumnos(&a);
+
+        for(i=0;i<=n;i++)
+        printf("%i - %s - %s - %s - %s - %s\n",a[i].id,a[i].nombre,a[i].direccion,a[i].localidad,a[i].curso,a[i].grupo);
+}
 
