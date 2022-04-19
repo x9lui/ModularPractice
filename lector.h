@@ -57,7 +57,7 @@ int CaracterANumero(int ch){
             return 9;
         break;
         default:
-            return 0;
+            return 10; //Significa que el caracter no es numérico
         break;
         }
 }
