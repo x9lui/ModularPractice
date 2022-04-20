@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lector.h"
+#include "escritor.h"
 
 /*typedef struct{
     int id;
@@ -11,7 +12,7 @@
 void ModdifMat(){
     Materia m;
     int id,i,numM = CargarMaterias(&m);
-    char auxN[51], auxA[4];
+    char auxN[51], auxA[4]; //Nombre y abreviatura de la nueva materia
 
     printf("Introduzca la id de la asignatura a modificar\n");
     scanf("%i",&id);
@@ -26,7 +27,9 @@ void ModdifMat(){
 
     printf("Se han modificado los datos de la asignatura con id %i\n",id);
 
-    GuardarMateria(id,m[id].nombre,m[id].abreviatura);
+    //Función borrar y añadir una nueva asignatura ?
+
+    EscribirMaterias(m,numM);
 }
 
 void MostrarMat(){
@@ -54,12 +57,4 @@ void SelecMat(){
     }while(c!=0)
 }
 
-GuardarMateria(int n,char *nombreM,char *abrevM){
-    Materia m;
-    int numM = CargarMaterias(&m);
-
-    FILE *f;
-    f = fopen("Materias.txt","w");
-    //recorrer el fichero hasta encontrar la id igual 
-    //sustituir los datos por los otros nuevos 
 }
