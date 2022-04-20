@@ -94,6 +94,7 @@ void EscribirMatriculas(Matricula *matriculas, int nMatriculas){
             fprintf(f,"\n");
         }
     }
+    fclose(f);
 }
 
 //Escribe el vector de estructuras Calificacion en su fichero correspondiente, importante prestar especial atención a nCalificaciones ya que puede variar si se eliminan o se añaden nuevas calificaciones
@@ -112,6 +113,7 @@ void EscribirCalificaciones(Calificacion *calificaciones, int nCalificaciones){
             fprintf(f,"\n");
         }
     }
+    fclose(f);
 }
 
 //Escribe el vector de estructuras Horario en su fichero correspondiente, importante prestar especial atención a nHorarios ya que puede variar si se eliminan o se añaden nuevos horarios
