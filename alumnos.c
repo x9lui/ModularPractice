@@ -114,11 +114,30 @@ void GuardarCambios(Alumno st){ //Hacer función, explicación Luis
 
 }
 
-void MostarAlumnos(){
+void MostrarAlum(){
     Alumno a;
     int i, n = CargarAlumnos(&a);
 
         for(i=0;i<=n;i++)
         printf("%i - %s - %s - %s - %s - %s\n",a[i].id,a[i].nombre,a[i].direccion,a[i].localidad,a[i].curso,a[i].grupo);
 }
+
+void SelecAlum(){
+    char c;
+    printf("Que acción desea realizar:\n Modificar los alumnos: M\n Mostrar el listado de alumnos: m\n Volver atrás: 0\n");
+    do{
+        getc(c);
+        switch(c){
+            case 'M': ModdifAlum();
+                break;
+            case 'm': MostrarAlum();
+                break;
+            case '0':break;
+            default:printf("Caracter introducido incorrecto, vuenla a intentarlo\n Recuerde, si quiere volver pulse el caracter 0\n");
+                break;
+        }
+    }while(c!=0)
+}
+
+//Implementción funciones de prueba
 
