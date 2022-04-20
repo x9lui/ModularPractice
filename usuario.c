@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lector.h"
+#include "escritor.h"
 
 void login(){ 
     char nU[6];
@@ -77,8 +78,11 @@ void ModdifU(){ //Modificación de datos
             default:  printf("Caracter incorrecto, vuelva a intentarlo\n");
                         break;
         }
-    } while(d != '0');   
-    //Llamar a la funcion que escribe en el fichero 
+    } while(d != '0');  
+     
+    //funcion borrar
+
+    EscribirUsuarios(u,numUs);
 }
 
 char *ModName(){
