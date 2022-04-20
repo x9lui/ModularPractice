@@ -4,30 +4,31 @@
 #include "lector.h"
 #include "escritor.h"
 
-void login(){ 
+int login(){ 
     char nU[6];
     char cU[9];
-    int browser;
+    int i;
     Usuario *u;
     int numUs = CargarUsuarios(&u);
 
     do{
     printf("Introduzca su nombre de usuario\n");
     fgets(nU,6,stdin);
-        for(browser=0;(strcmp(nU,u[browser].nombreUsuario))!=0 && browser<numUs ;browser++){ //obtención posición 
-            if(browser==numUs) //volver a intoduzca nombre de usuario
+        for(i=0;(strcmp(nU,u[i].nombreUsuario))!=0 && i<numUs ;i++){ //obtención posición 
+            if(i==numUs) //volver a intoduzca nombre de usuario
                 printf("Usuario no encontrado, intentelo de nuevo.\n");    
         }
     fflush(stdin);
-    }while(browser==numUs); //inicio usuario
+    }while(i==numUs); //inicio usuario
 
     do{
     printf("Introduzca su contraseña\n");
-    fgets(c_u,9,stdin);
-    if(strcmp(c_u,u[browser].contraseña)!=0)
+    fgets(cU,9,stdin);
+    if(strcmp(cU,u[i].contraseña)!=0)
         printf("\n Contraseña incorrecta, intentelo de nuevo.\n");
     fflush(stdin);
-    }while(strcmp(cU,u[browser].contraseña)==0); //comprobación contraseña
+    }while(strcmp(cU,u[i].contraseña)==0); //comprobación contraseña
+    return(u[i].perfil);
 } //inicialización de usuario
  
 void ModdifU(){ //Modificación de datos 
@@ -56,18 +57,7 @@ void ModdifU(){ //Modificación de datos
                 break;
 
             case 'C': //Modificación de contraseña
-                printf("Escriba la contraseña actual\n");
-                do{
-                fgets(pasw);
-                if(strcmp(pasw,u[i].contraseña)==0){
                 u[i].contraseña=ModPasword();
-                aux=0
-                }
-                else{
-                    printf("Contraseña incorrecta\n Introduzca 0 si quiere volver atrás\n");
-                    scanf("%i",&aux);
-                }
-                }while(aux!=0);
                 break;
 
             case 'P'://Modificación del perfil
@@ -80,8 +70,6 @@ void ModdifU(){ //Modificación de datos
                         break;
         }
     } while(d != '0');  
-
-    //funcion borrar
 
     EscribirUsuarios(u,numUs);
 }
@@ -104,7 +92,7 @@ char *ModNickname(){
 
 char *ModPasword(){
     char n_pasword[9];
-    printf("Introducir nuevo nombre de usuario, recuerde que solo puede tener 8 caracteres, si incluye más solo se guardarán los 8 primeros\n");
+    printf("Introducir nueva contraseña, recuerde que solo puede tener 8 caracteres, si incluye más solo se guardarán los 8 primeros\n");
     fgets(n_pasword,9,stdin);
     fflush;
     printf("Su nueva contraseña es %c\n",n_pasword);
@@ -124,6 +112,9 @@ int ModProfile(int p){
 }
 
 //f_borrar?
+/*
+
+*/
 
 //Funcion de prueba de  las funciones
 
