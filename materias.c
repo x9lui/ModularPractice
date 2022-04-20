@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lector.h"
 #include "escritor.h"
 
@@ -57,4 +58,3 @@ void SelecMat(){
     }while(c!=0)
 }
 
-}
