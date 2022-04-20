@@ -327,3 +327,6 @@ int CargarHorarios(Horario **ptr){
     *ptr = horario;
     return numeroHorarios;
 }
+
+
+#endif
