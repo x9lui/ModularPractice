@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lector.h"
+#include "escritor.h"
 
 /*typedef struct{
     int id;
@@ -51,7 +52,11 @@ void ModdifAlum(){
             break;
         }
     }while(c != '0');
-    //Guardar cambios
+
+    //función borrar y añadir
+
+    EscribirAlumnos(a,n);
+
     printf("Se han guardado los cambios correctamente\n");
 }
 
