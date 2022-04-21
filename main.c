@@ -2,6 +2,8 @@
 #include <string.h>
 #include "lector.h"
 #include "horarios.c"
+#include "usuario.c"
+#include "alumnos.c"
 
 void ListarMateriasDiariasProfesor(int, int);
 
@@ -12,10 +14,7 @@ int VerificacionGrupoProfesor(int, char[11]);
 int main(){ 
     
     int idUsuario, perfil, dia;
-    //Login(&idUsuario, &perfil);
-    dia = 1;
-    idUsuario =3;
-    perfil = 1;
+    Login(&idUsuario, &perfil);
     if(perfil == 1){
         int salir = 0;
         do{
@@ -34,10 +33,13 @@ int main(){
             }while(op>4 && op<0);
             switch(op){
                 case 1:
+                    //MenuUsuarios();
                 break;
                 case 2:
+                    //MenuAlumnos();
                 break;
                 case 3:
+                    //MenuMaterias();
                 break;
                 case 4:
                     MenuHorarios();
@@ -92,7 +94,6 @@ int main(){
                         scanf("%s",abr);
                         ver = VerificacionImpartirMateria(idUsuario,abr);
                     }while(ver == 0);
-                    printf("Verificado\n");
                     
                     printf("Introduzca una opción\n");
                     printf("1.Lista de alumnos\n");
