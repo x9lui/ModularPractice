@@ -4,7 +4,7 @@
 #include "lector.h"
 #include "escritor.h"
 
-login(int *i, int p){ 
+login(int *i, int *p){ 
     char nU[6];
     char cU[9];
     Usuario *u;
