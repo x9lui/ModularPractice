@@ -4,10 +4,9 @@
 #include "lector.h"
 #include "escritor.h"
 
-int login(){ 
+login(int *i, int p){ 
     char nU[6];
     char cU[9];
-    int i;
     Usuario *u;
     int numUs = CargarUsuarios(&u);
 
@@ -28,7 +27,7 @@ int login(){
         printf("\n Contraseña incorrecta, intentelo de nuevo.\n");
     fflush(stdin);
     }while(strcmp(cU,u[i].contraseña)==0); //comprobación contraseña
-    return(u[i].perfil);
+    p=u[i].perfil
 } //inicialización de usuario
 
 void MostrarU(){
