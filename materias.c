@@ -42,19 +42,19 @@ void MostrarMat(){
 }
 
 void SelecMat(){
-    char c;
-    printf("Que acción desea realizar:\n Modificar la materia: M\n Mostrar el listado de materias: m\n Volver atrás: 0\n");
+    int s;
     do{
-        getc(c);
-        switch(c){
-            case 'M': ModdifMat();
+    printf("Que acción desea realizar:\n1. Modificar la materia\n2. Mostrar el listado de materias\n3. Volver atrás\n");
+        scanf("%i",&s));
+        switch(s){
+            case 1: ModdifMat();
                 break;
-            case 'm': MostrarMat();
+            case 2: MostrarMat();
                 break;
-            case '0':break;
-            default:printf("Caracter introducido incorrecto, vuenla a intentarlo\n Recuerde, si quiere volver pulse el caracter 0\n");
+            case 3:break;
+            default:printf("Caracter introducido incorrecto, vuenla a intentarlo\n Recuerde, si quiere volver pulse 3\n");
                 break;
         }
-    }while(c!=0)
+    }while(s!=3)
 }
 
