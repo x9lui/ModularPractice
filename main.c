@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "lector.h"
+#include "horarios.c"
 
 void ListarMateriasDiariasProfesor(int, int);
 
@@ -14,18 +15,23 @@ int main(){
     //Login(&idUsuario, &perfil);
     dia = 1;
     idUsuario =3;
-    perfil = 0;
+    perfil = 1;
     if(perfil == 1){
         int salir = 0;
         do{
             int op;
-            printf("1.Usuarios\n");
-            printf("2.Alumnos\n");
-            printf("3.Materias\n");
-            printf("4.Horarios\n");
-            printf("0.Salir\n");
-            printf("Introduzca la opción:\n");
-            scanf("%i",&op);
+            do{
+                printf("1.Usuarios\n");
+                printf("2.Alumnos\n");
+                printf("3.Materias\n");
+                printf("4.Horarios\n");
+                printf("0.Salir\n");
+                printf("Introduzca la opción:\n");
+                scanf("%i",&op);
+                if(op>4 && op<0){
+                    printf("Número no válido\n");
+                }
+            }while(op>4 && op<0);
             switch(op){
                 case 1:
                 break;
@@ -34,6 +40,7 @@ int main(){
                 case 3:
                 break;
                 case 4:
+                    MenuHorarios();
                 break;
                 case 0:
                     salir = 1;
@@ -92,6 +99,10 @@ int main(){
                     printf("2.Cambiar de grupo\n");
                     printf("3.Salir\n");
                     scanf("%i",&op);
+
+                    if(op == 1){
+                        MenuAlumnos(idUsuario,grupo,abr);
+                    }
                 }while(op !=3);
             }
         }while(salir == 0);
