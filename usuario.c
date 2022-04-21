@@ -30,6 +30,14 @@ int login(){
     }while(strcmp(cU,u[i].contraseña)==0); //comprobación contraseña
     return(u[i].perfil);
 } //inicialización de usuario
+
+void MostrarU(){
+    Usuario u;
+    int i, n = CargarUsuarios(&u);
+
+        for(i=0;i<=n;i++)
+        printf("%i - %s - %i - %s - %s\n",u[i].id,u[i].nombre,u[i].perfil,u[i].nombreUsuario,u[i].contraseña);
+}
  
 void ModdifU(){ //Modificación de datos 
     int n,i;
@@ -111,10 +119,31 @@ int ModProfile(int p){
     return(p);
 }
 
-//f_borrar?
-/*
+void SelectorU(){
+    int s;
+    do{
+        printf("¿Qué acción desea realizar?\n1. Listar usuarios\n2. Modificar usuarios\n3. Volver");
+        scanf("%i",&s);
+    
+        switch (s){
+            case 1:
+                MostrarU();
+                break;
 
-*/
+            case 2:
+                ModdifU();
+                break;
+
+            case 3:
+                break;
+    
+            default:
+                printf("Caracter incorrecto. Vuelva a intentarlo\n");
+                break;
+        }
+    }while(s != 3);
+
+}
 
 //Funcion de prueba de  las funciones
 
